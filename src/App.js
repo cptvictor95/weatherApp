@@ -19,15 +19,17 @@ const App = () => {
 
   return (
         <div className="main-container">
-          <label>Weather Search</label>
-          <input
-          type="text"
-          className="search"
-          placeholder="Search..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={search}
-          />
+          <div className="input-form">
+            <label>Weather Search</label>
+            <input
+            type="text"
+            className="search"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyPress={search}
+            />
+          </div>
 
           {weather.main && (
             <div className="city">
@@ -38,6 +40,10 @@ const App = () => {
               <div className="city-temp">
                 {Math.round(weather.main.temp)}
                 <sup>&deg;C</sup>
+              </div>
+              <div className="info">
+                <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt={weather.weather[0].description} className="city-icon"/>
+                <p>{weather.weather[0].description}</p>
               </div>
             </div>
           )}
